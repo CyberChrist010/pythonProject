@@ -31,5 +31,5 @@ def send_logs_to_siem(csv_file):
             print(f"Failed to send log: {response.text}")
 
 
-# Replace 'logs.csv' with your CSV file path
+# Replace '.csv' with your CSV file path
 send_logs_to_siem('user_data.csv')
