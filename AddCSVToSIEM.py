@@ -6,6 +6,10 @@ import json
 SIEM_API_ENDPOINT = 'https://siem.example.com/api/logs'
 API_KEY = 'your_api_key_here'
 
+# Test response
+# print(response.json())
+# print(response.status_code)
+
 
 def send_logs_to_siem(csv_file):
     # Read logs from CSV
