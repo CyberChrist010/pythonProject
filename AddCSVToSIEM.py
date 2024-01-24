@@ -1,5 +1,5 @@
 import pandas as pd
-import requests
+# import requests
 import json
 
 # Add SIEM's API endpoint
@@ -15,21 +15,25 @@ def send_logs_to_siem(csv_file):
     logs_json = logs.to_json(orient='records')
     log_records = json.loads(logs_json)
 
-    # Send each log record to the SIEM
+    # Local testing: Print each log record
     for record in log_records:
-        response = requests.post(
-            SIEM_API_ENDPOINT,
-            headers={
-                'Content-Type': 'application/json',
-                'Authorization': f'Bearer {API_KEY}'
-            },
-            json=record
-        )
-        if response.status_code == 200:
-            print("Log successfully sent")
-        else:
-            print(f"Failed to send log: {response.text}")
+        print("Log Record:", record)
+
+    # # Uncomment the following code to interact with the SIEM
+    # for record in log_records:
+    #     response = requests.post(
+    #         SIEM_API_ENDPOINT,
+    #         headers={
+    #             'Content-Type': 'application/json',
+    #             'Authorization': f'Bearer {API_KEY}'
+    #         },
+    #         json=record
+    #     )
+    #     if response.status_code == 200:
+    #         print("Log successfully sent")
+    #     else:
+    #         print(f"Failed to send log: {response.text}")
 
 
-# Replace 'logs.csv' with your CSV file path
+# Call the function with the CSV file path
 send_logs_to_siem('user_data.csv')
